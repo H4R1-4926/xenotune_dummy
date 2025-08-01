@@ -6,8 +6,8 @@ firebase_initialized = False
 firebase_key_path = "firebase_key.json"
 
 def write_service_account_file():
-    key_content = os.getenv("FIREBASE_CRED_PATH", "assets/serviceAccountKey.json")
-    # key_content = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+    # key_content = os.getenv("FIREBASE_CRED_PATH", "assets/serviceAccountKey.json")
+    key_content = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
     if not key_content:
         raise RuntimeError("Firebase key not found in environment variables.")
 
@@ -30,7 +30,7 @@ def init_firebase():
     cred = credentials.Certificate(firebase_key_path)
       
     firebase_admin.initialize_app(cred, {
-        'storageBucket': os.getenv('FIREBASE_BUCKET', 'xenotune-fromx.appspot.com')  # ✅ corrected bucket name
+        'storageBucket': os.getenv('FIREBASE_BUCKET', 'xenotune-fromx.firebasestorage.app')  # ✅ corrected bucket name
     })
 
     firebase_initialized = True
